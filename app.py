@@ -6,6 +6,8 @@ from flask import Flask,render_template,request,redirect,url_for
 
 app=Flask(__name__)
 
+techLst = ["Python",".Net","Machine Learning","SQL","Deep Learning","Generative AI", "FullStack developement","Flask"]
+
 @app.route('/')
 def home():
     return "<h2>Hello, World!</h2>"
@@ -22,9 +24,26 @@ def welcome(name):
 def admin():
     return redirect(url_for("adminReroute"))
 
+@app.route('/adminName')
+def adminName():
+    return redirect(url_for("welcome", name = "Suraj Admin"))
+
 @app.route('/index')
 def index():
     return render_template('index.html')
+
+@app.route('/hello/<name>/<sname>')
+def hello(name,sname):
+    return render_template('hello.html', name=name, sname=sname)
+
+
+@app.route('/even/<int:range>')
+def even(range):
+    return render_template('even.html',seriesRange = range)
+
+@app.route('/tech')
+def tech():
+    return render_template('tech.html',techLst = techLst)
 
 @app.route('/success/<int:score>')
 def success(score):

@@ -1,0 +1,7 @@
+<h1>Welcome to even number series for range {{ seriesRange }}</h1>
+
+{% for x in range(seriesRange) %}
+    {% if x % 2 == 0 %}
+        <p>{{ x }}</p>
+    {% endif %}
+{% endfor %}
